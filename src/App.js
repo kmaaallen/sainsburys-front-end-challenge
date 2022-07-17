@@ -1,17 +1,22 @@
 import './App.css';
 // Components
 import Products from './components/Products';
+import { GlobalState } from './components/GlobalState';
+import Basket from './components/Basket';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>
-          Sainsbury's
-        </h1>
-      </header>
-      <Products />
-    </div>
+    <GlobalState>
+      <div className="App">
+        <header className="App-header">
+          <h1>
+            Sainsbury's
+          </h1>
+          <Basket />
+        </header>
+        <Products />
+      </div>
+    </GlobalState>
   );
 }
 
