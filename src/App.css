@@ -1,16 +1,27 @@
+:root {
+  --primary: #f06c01;
+  --primary-dark: #ce6007;
+  --secondary: #ffffff;
+}
+
 .App {
   text-align: center;
-  background-color: #fff;
-  padding: 30px;
+  background-color: var(--secondary);
+  width: 100%;
 }
 
 .App-header {
   display: flex;
   flex-direction: row;
-  align-items: left;
   justify-content: space-between;
   font-size: 1.5rem;
-  color: black;
+  color: var(--primary);
+  align-items: center;
+  position: fixed;
+  width: calc(100% - 60px);
+  background-color: var(--secondary);
+  padding: 30px;
+  margin-top: -30px;
 }
 
 /* Product container */
@@ -26,8 +37,9 @@
 /* Product card */
 .Product {
   max-width: 250px;
+  height: 300px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  margin: auto;
+  margin: 5px auto;
   padding: 15px;
   border-radius: 8px;
 }
@@ -37,7 +49,64 @@
   align-self: center;
 }
 
-.Product-info,
-.Product-price {
+.Product-info {
   text-align: left;
+  height: 100px;
+}
+
+.Product-basket-button {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: var(--primary);
+  color: var(--secondary);
+  padding: 15px;
+  font-size: 1rem;
+  font-weight: bold;
+  width: 250px;
+  height: 50px;
+  border: none;
+  border-radius: 8px;
+}
+
+.Product-basket-div {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: var(--primary);
+  color: var(--secondary);
+  align-items: center;
+  font-size: 1rem;
+  font-weight: bold;
+  width: 250px;
+  height: 50px;
+  border: none;
+  border-radius: 8px;
+}
+
+.Product-basket-add-button,
+.Product-basket-remove-button {
+  background-color: var(--primary);
+  color: var(--secondary);
+  font-size: 1rem;
+  font-weight: bold;
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--primary-dark);
+  border-radius: 8px;
+  padding: 0;
+}
+
+.Product-basket-button>div {
+  background: var(--secondary);
+  color: var(--primary);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  align-self: center;
+  line-height: 30px;
+}
+
+.Product-basket-button:hover,
+.Product-basket-add-button:hover,
+.Product-basket-remove-button:hover {
+  background-color: var(--primary-dark)
 }
