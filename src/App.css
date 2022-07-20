@@ -1,6 +1,6 @@
 :root {
-  --primary: #f06c01;
-  --primary-dark: #ce6007;
+  --primary: #084a9f;
+  --primary-dark: #0728ce;
   --secondary: #ffffff;
 }
 
@@ -15,13 +15,17 @@
   flex-direction: row;
   justify-content: space-between;
   font-size: 1.5rem;
-  color: var(--primary);
+  color: var(--secondary);
   align-items: center;
   position: fixed;
   width: calc(100% - 60px);
-  background-color: var(--secondary);
+  background-color: var(--primary);
   padding: 30px;
   margin-top: -30px;
+}
+
+.App-header>h1 {
+  margin-block: auto;
 }
 
 /* Product container */
@@ -63,9 +67,10 @@
   font-size: 1rem;
   font-weight: bold;
   width: 250px;
-  height: 50px;
+  max-height: 50px;
   border: none;
   border-radius: 8px;
+  align-items: center;
 }
 
 .Product-basket-div {
@@ -95,18 +100,90 @@
   padding: 0;
 }
 
-.Product-basket-button>div {
-  background: var(--secondary);
-  color: var(--primary);
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  align-self: center;
-  line-height: 30px;
-}
-
-.Product-basket-button:hover,
 .Product-basket-add-button:hover,
 .Product-basket-remove-button:hover {
   background-color: var(--primary-dark)
 }
+
+/* Basket */
+.Basket-button {
+  display: flex;
+  justify-content: flex-end;
+  background-color: var(--primary);
+  color: var(--secondary);
+  padding: 15px;
+  width: auto;
+  max-height: 50px;
+  border: none;
+  border-radius: 8px;
+  align-items: center;
+}
+
+.Basket-button:hover {
+  text-decoration: underline;
+}
+
+.Basket-button>div {
+  background: var(--secondary);
+  color: var(--primary);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -25px;
+  line-height: 20px;
+}
+
+.Basket-icon {
+  font-size: 2rem;
+}
+
+.Basket-flyin {
+  max-height: 100vh;
+  width: 50vw;
+  font-size: 15px;
+  background: var(--primary);
+  position: absolute;
+  margin-left: 50%;
+  z-index: 100;
+  margin-top: 85px;
+  color: var(--primary)
+}
+
+.Basket-product-summary {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background: var(--secondary);
+  border-radius: 8px;
+  margin: 10px;
+  align-items: center;
+  min-height: 20px;
+}
+
+.Basket-product-image {
+  height: auto;
+  width: 15%;
+}
+
+.Basket-product-summary-title {
+  width: 40%;
+  text-align: left;
+  padding-left: 2px;
+}
+
+.Basket-product-summary-price {
+  font-weight: bold;
+}
+
+.Basket-product-remove-button {
+  color: red;
+  font-size: 20px;
+  background-color: inherit;
+  border: none;
+}
+
+
+
+
+/* Media queries */
+/* Break point for tablet basket button TODO*/

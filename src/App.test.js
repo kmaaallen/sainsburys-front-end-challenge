@@ -3,7 +3,7 @@ import App from './App';
 
 test('renders page header', () => {
   render(<App />);
-  const pageHeader = screen.getByText(/sainsbury's/i);
+  const pageHeader = screen.getByText(/theshop/i);
   expect(pageHeader).toBeInTheDocument();
 });
 

@@ -3,6 +3,7 @@ import './App.css';
 import Products from './components/Products';
 import { GlobalState } from './components/GlobalState';
 import Basket from './components/Basket';
+import FullBasket from './components/FullBasket';
 
 function App() {
   return (
@@ -10,11 +11,14 @@ function App() {
       <div className="App">
         <header className="App-header">
           <h1>
-            Sainsbury's
+            TheShop
           </h1>
           <Basket />
         </header>
-        <Products />
+        <FullBasket />
+        <div className="App-body">
+          <Products />
+        </div>
       </div>
     </GlobalState>
   );
