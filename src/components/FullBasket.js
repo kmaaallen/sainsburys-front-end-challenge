@@ -17,7 +17,7 @@ export default function FullBasket() {
                                     <div className="Basket-product-summary-title ">{item.title}</div>
                                     <div className="Basket-product-summary-amount ">x {item.amount}</div>
                                     <div className="Basket-product-summary-price">£ {item.amount * item.price}</div>
-                                    <button className="Basket-product-remove-button" onClick={() => removeFromBasket(item)}>{item.amount > 1 ? <FaMinusCircle data-testid="minus-circle" /> : <FaTimesCircle data-testid="times-circle" />}</button>
+                                    <button className="Basket-product-remove-button" aria-labelledby="button-label" onClick={() => removeFromBasket(item)}><div hidden id="button-label">{item.amount > 0 ? 'remove one from basket' : 'delete from basket'}</div>{item.amount > 1 ? <FaMinusCircle data-testid="minus-circle" /> : <FaTimesCircle data-testid="times-circle" />}</button>
                                 </div>
                             )
                         })}

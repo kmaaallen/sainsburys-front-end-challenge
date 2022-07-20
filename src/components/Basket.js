@@ -9,7 +9,7 @@ export default function Basket() {
         <ShopContext.Consumer>
             {({ basket, basketClick }) => (
                 <div>
-                    <button className="Basket-button" onClick={() => basketClick()}><FaShoppingBasket className='Basket-icon' /><div data-testid="basket-count">{basket.length}</div></button>
+                    <button className="Basket-button" onClick={() => basketClick()} aria-labelledby="basket-button"><FaShoppingBasket className='Basket-icon' /><span hidden id='basket-button'>basket</span><div data-testid="basket-count">{basket.length}</div></button>
                 </div>
             )}
         </ShopContext.Consumer>

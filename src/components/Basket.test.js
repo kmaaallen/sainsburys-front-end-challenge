@@ -14,7 +14,7 @@ const emptyContext = {
 
 test('renders basket', () => {
     render(<ShopContext.Provider value={emptyContext}><Basket /></ShopContext.Provider>);
-    const btn = screen.queryByRole('button', { name: '0' });
+    const btn = screen.queryByRole('button', { name: 'basket' });
     expect(btn).toBeInTheDocument();
 });
 
@@ -36,8 +36,8 @@ test('renders correct number of basket items when basket not empty', () => {
                 "amount": 1
             }],
     }}><Basket /></ShopContext.Provider>);
-    const btn = screen.getByRole('button', { name: '1' });
-    expect(btn).toBeInTheDocument();
+    const count = screen.getByTestId('basket-count');
+    expect(count.textContent).toBe('1');
 });
 
 test('calls basket click function when basket clicked', () => {
@@ -60,7 +60,7 @@ test('calls basket click function when basket clicked', () => {
             }],
         basketClick: basketClick,
     }}><Basket /></ShopContext.Provider>);
-    const btn = screen.getByRole('button', { name: '1' });
+    const btn = screen.getByRole('button', { name: 'basket' });
     expect(btn).toBeInTheDocument();
     expect(screen.queryByTestId('flyout')).toBeFalsy();
     fireEvent.click(btn);
