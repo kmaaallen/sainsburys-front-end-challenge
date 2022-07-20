@@ -4,13 +4,16 @@ export const ShopContext = createContext({
     products: [],
     basket: [],
     addToBasket: (product) => { },
-    removeFromBasket: (product) => { }
+    removeFromBasket: (product) => { },
+    showBasket: false,
+    basketClick: (basket) => { },
 });
 
 
 export function GlobalState(props) {
     const [products, setProducts] = useState([]);
     const [basket, setBasket] = useState([]);
+    const [showBasket, setShowBasket] = useState(false);
 
     // Fetch products
     async function fetchProducts() {
@@ -21,6 +24,11 @@ export function GlobalState(props) {
     useEffect(() => {
         fetchProducts();
     }, []);
+
+    // Show basket
+    const basketClick = () => {
+        setShowBasket(!showBasket);
+    }
 
     // Add to basket
     const addToBasket = (product) => {
@@ -73,6 +81,8 @@ export function GlobalState(props) {
                     basket: basket,
                     addToBasket: addToBasket,
                     removeFromBasket: removeFromBasket,
+                    showBasket: showBasket,
+                    basketClick: basketClick,
                 }
             }>
             {props.children}
