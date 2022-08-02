@@ -1,8 +1,10 @@
 import React from 'react';
 // Icons
-import { FaMinusCircle, FaTimesCircle } from "react-icons/fa";
+import { FaTrash } from "react-icons/fa";
 // Context
 import { ShopContext } from './GlobalState';
+// Components
+import AddToBasket from './AddToBasket';
 
 export default function FullBasket() {
     return (
@@ -12,16 +14,18 @@ export default function FullBasket() {
                     {basket.length > 0 ? <div>
                         {basket.map((item) => {
                             return (
-                                <div className="Basket-product-summary" key={item.sku}>
-                                    <img src={item.image} alt="" className="Basket-product-image" />
-                                    <div className="Basket-product-summary-title ">{item.title}</div>
-                                    <div className="Basket-product-summary-amount ">x {item.amount}</div>
+                                <div className="Basket-container" key={item.sku}>
+                                    <div className="Basket-product-image"><img src={item.image} alt="" /></div>
+                                    <div className="Basket-product-summary-title">{item.title}</div>
                                     <div className="Basket-product-summary-price">£ {item.amount * item.price}</div>
-                                    <button className="Basket-product-remove-button" aria-labelledby="button-label" onClick={() => removeFromBasket(item)}><div hidden id="button-label">{item.amount > 0 ? 'remove one from basket' : 'delete from basket'}</div>{item.amount > 1 ? <FaMinusCircle data-testid="minus-circle" /> : <FaTimesCircle data-testid="times-circle" />}</button>
+                                    <div className="Basket-product-summary-actions"><AddToBasket product={item} /></div>
+                                    <div className="Basket-product-summary-delete">
+                                        <button className="Basket-product-remove-button" aria-labelledby="button-label" onClick={() => removeFromBasket(item, item.amount)}><div hidden id="button-label">'delete from basket'</div><FaTrash data-testid="fa-trash" /></button>
+                                    </div>
                                 </div>
                             )
                         })}
-                    </div> : <div className="Basket-product-summary">Your basket is empty</div>}
+                    </div> : null}
                 </div> : null
             )}
         </ShopContext.Consumer>

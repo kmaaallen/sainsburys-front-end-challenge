@@ -7,8 +7,9 @@ import { ShopContext } from './GlobalState';
 export default function Products() {
     return (
         <ShopContext.Consumer>
-            {({ products, basket }) => (
+            {({ products, basket, showBasket }) => (
                 <div>
+                    {showBasket ? <div className="Products-overlay"></div> : null}
                     <h2 style={{ paddingTop: '100px' }}>Products</h2>
                     <div className="Products">
                         {products ? products.map((product) => {

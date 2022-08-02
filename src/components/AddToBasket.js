@@ -14,7 +14,6 @@ export default function AddToBasket(props) {
                         {basket[basket.findIndex((basketItem) => { return basketItem.sku === props.product.sku; })].amount}
                         <button className="Product-basket-add-button" onClick={() => addToBasket(props.product)}>+</button>
                     </div>
-
             )}
         </ShopContext.Consumer>
     )
