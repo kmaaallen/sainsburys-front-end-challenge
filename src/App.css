@@ -20,8 +20,9 @@
   position: fixed;
   width: calc(100% - 60px);
   background-color: var(--primary);
-  padding: 30px;
+  padding: 15px 30px;
   margin-top: -30px;
+  z-index: 3;
 }
 
 .App-header>h1 {
@@ -36,6 +37,22 @@
 
 .Products-loading {
   margin: auto;
+}
+
+.Products-overlay {
+  position: fixed;
+  /* Sit on top of the page content */
+  width: 100%;
+  /* Full width (cover the whole page) */
+  height: 100%;
+  /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Black background with opacity */
+  z-index: 2;
 }
 
 /* Product card */
@@ -76,25 +93,23 @@
 .Product-basket-div {
   display: flex;
   justify-content: space-evenly;
-  background-color: var(--primary);
-  color: var(--secondary);
   align-items: center;
-  font-size: 1rem;
+  font-size: inherit;
   font-weight: bold;
-  width: 250px;
-  height: 50px;
-  border: none;
+  border: 2px solid var(--primary);
   border-radius: 8px;
+  min-width: 100px;
+  padding: 10px;
 }
 
 .Product-basket-add-button,
 .Product-basket-remove-button {
   background-color: var(--primary);
   color: var(--secondary);
-  font-size: 1rem;
+  font-size: inherit;
   font-weight: bold;
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   border: 1px solid var(--primary-dark);
   border-radius: 8px;
   padding: 0;
@@ -138,41 +153,84 @@
 }
 
 .Basket-flyin {
-  max-height: 100vh;
-  width: 50vw;
+  height: 85vh;
+  width: 100vw;
+  border-bottom: 30px solid var(--primary);
   font-size: 15px;
   background: var(--primary);
-  position: absolute;
-  margin-left: 50%;
+  position: fixed;
+  overflow-y: scroll;
   z-index: 100;
-  margin-top: 85px;
-  color: var(--primary)
+  margin-top: 55px;
+  color: var(--primary);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+/* testing */
+.Basket-container {
+  padding: 10px;
+  background: var(--secondary);
+  border-radius: 8px;
+  margin: 10px;
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr 0.5fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "image title title title"
+    "image price actions delete"
+    ". . . .";
+}
+
+.Basket-product-image {
+  grid-area: image;
+}
+
+.Basket-product-image>img {
+  height: auto;
+  width: 50px;
+  margin-top: 10px;
+}
+
+.Basket-product-summary-title {
+  grid-area: title;
+  align-self: center;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.Basket-product-summary-price {
+  grid-area: price;
+  align-self: center;
+}
+
+.Basket-product-summary-actions {
+  grid-area: actions;
+  align-self: center;
+}
+
+.Basket-product-summary-actions>div.Product-basket-div {
+  border: none;
+}
+
+.Basket-product-summary-delete {
+  grid-area: delete;
+  align-self: center;
 }
 
 .Basket-product-summary {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
   background: var(--secondary);
   border-radius: 8px;
   margin: 10px;
   align-items: center;
   min-height: 20px;
-}
-
-.Basket-product-image {
-  height: auto;
-  width: 15%;
-}
-
-.Basket-product-summary-title {
-  width: 40%;
-  text-align: left;
-  padding-left: 2px;
-}
-
-.Basket-product-summary-price {
-  font-weight: bold;
+  font-size: smaller;
+  padding: 10px;
 }
 
 .Basket-product-remove-button {
@@ -183,7 +241,10 @@
 }
 
 
-
-
 /* Media queries */
-/* Break point for tablet basket button TODO*/
+@media (min-width: 768px) {
+  .Basket-flyin {
+    width: 50vw;
+    margin-left: 50%;
+  }
+}

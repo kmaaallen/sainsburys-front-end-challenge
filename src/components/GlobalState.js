@@ -27,7 +27,7 @@ export function GlobalState(props) {
 
     // Show basket
     const basketClick = () => {
-        setShowBasket(!showBasket);
+        if (basket.length > 0) setShowBasket(!showBasket);
     }
 
     // Add to basket
@@ -50,7 +50,7 @@ export function GlobalState(props) {
 
 
     // Remove from basket
-    const removeFromBasket = (product) => {
+    const removeFromBasket = (product, quantity) => {
         const newBasket = [...basket];
         const removedItemIndex = newBasket.findIndex((basketItem) => {
             return basketItem.sku === product.sku;
@@ -61,8 +61,8 @@ export function GlobalState(props) {
             return;
         } else {
             const removedItem = { ...newBasket[removedItemIndex] };
-            if (removedItem.amount === 1) {
-                // Only one item so remove whole product
+            if (removedItem.amount === 1 || (quantity && quantity === removedItem.amount)) {
+                // Only one item so remove whole product or delete line
                 newBasket.splice(removedItemIndex, 1);
             } else {
                 removedItem.amount--;
